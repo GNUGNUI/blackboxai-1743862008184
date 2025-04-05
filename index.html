@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Songs of Salvation - Gospel Lyrics App</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --neon-green: #39FF14;
+            --neon-purple: #FF00FF;
+            --neon-blue: #00F7FF;
+            --neon-orange: #FF6B08;
+            --neon-pink: #FF69B4;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #000;
+            color: #fff;
+        }
+
+        .logo-text {
+            font-family: 'Pacifico', cursive;
+            text-shadow: 0 0 10px var(--neon-green),
+                         0 0 20px var(--neon-green),
+                         0 0 30px var(--neon-green);
+        }
+
+        .search-container {
+            box-shadow: 0 0 10px var(--neon-green);
+        }
+
+        .tag-box {
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(57, 255, 20, 0.3);
+            transform: perspective(1000px) rotateX(10deg);
+        }
+
+        .tag-box:hover {
+            transform: perspective(1000px) rotateX(0deg) scale(1.05);
+            box-shadow: 0 0 20px var(--neon-green);
+        }
+
+        .song-card {
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .song-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 15px var(--neon-green);
+        }
+
+        .recent-updates {
+            border: 1px solid var(--neon-green);
+            box-shadow: 0 0 15px var(--neon-green);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Header -->
+    <header class="py-6 px-4 md:px-8">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="logo-text text-4xl md:text-5xl text-white">Songs of Salvation</h1>
+            <div class="flex items-center gap-4">
+                <button class="bg-transparent border border-[var(--neon-green)] px-4 py-2 rounded-lg hover:bg-[var(--neon-green)] hover:text-black transition-all">
+                    <i class="fas fa-user mr-2"></i>Admin Login
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Search Section -->
+    <section class="py-8 px-4 md:px-8">
+        <div class="container mx-auto">
+            <div class="search-container bg-black/30 p-6 rounded-xl backdrop-blur-sm">
+                <div class="flex flex-col md:flex-row gap-4">
+                    <input type="text" placeholder="Search songs..." class="flex-1 px-4 py-2 rounded-lg bg-white/10 border border-[var(--neon-green)] focus:outline-none focus:ring-2 focus:ring-[var(--neon-green)]">
+                    <select class="px-4 py-2 rounded-lg bg-white/10 border border-[var(--neon-green)] focus:outline-none">
+                        <option value="">Sort By</option>
+                        <option value="az">A-Z</option>
+                        <option value="za">Z-A</option>
+                    </select>
+                    <select class="px-4 py-2 rounded-lg bg-white/10 border border-[var(--neon-green)] focus:outline-none">
+                        <option value="">Language</option>
+                        <option value="bengali">Bengali</option>
+                        <option value="english">English</option>
+                        <option value="hindi">Hindi</option>
+                        <option value="bodo">Bodo</option>
+                        <option value="nepali">Nepali</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tags Section -->
+    <section class="py-8 px-4 md:px-8">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                <div class="tag-box bg-black/30 p-4 rounded-xl text-center cursor-pointer border border-[var(--neon-green)]">
+                    <i class="fas fa-star mb-2 text-[var(--neon-green)]"></i>
+                    <p>Christmas</p>
+                </div>
+                <div class="tag-box bg-black/30 p-4 rounded-xl text-center cursor-pointer border border-[var(--neon-green)]">
+                    <i class="fas fa-cross mb-2 text-[var(--neon-green)]"></i>
+                    <p>Good Friday</p>
+                </div>
+                <div class="tag-box bg-black/30 p-4 rounded-xl text-center cursor-pointer border border-[var(--neon-green)]">
+                    <i class="fas fa-church mb-2 text-[var(--neon-green)]"></i>
+                    <p>Easter Sunday</p>
+                </div>
+                <div class="tag-box bg-black/30 p-4 rounded-xl text-center cursor-pointer border border-[var(--neon-green)]">
+                    <i class="fas fa-child mb-2 text-[var(--neon-green)]"></i>
+                    <p>Sunday School Day</p>
+                </div>
+                <div class="tag-box bg-black/30 p-4 rounded-xl text-center cursor-pointer border border-[var(--neon-green)]">
+                    <i class="fas fa-calendar mb-2 text-[var(--neon-green)]"></i>
+                    <p>New Year</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Updates -->
+    <section class="py-8 px-4 md:px-8">
+        <div class="container mx-auto">
+            <div class="recent-updates bg-black/30 p-6 rounded-xl backdrop-blur-sm">
+                <h2 class="text-2xl font-semibold mb-4 flex items-center">
+                    <i class="fas fa-clock mr-2 text-[var(--neon-green)]"></i>
+                    Recently Uploaded
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <!-- Sample Recent Songs -->
+                    <div class="p-4 bg-white/5 rounded-lg">
+                        <h3 class="font-semibold">Amazing Grace</h3>
+                        <p class="text-sm text-gray-400">Composer: John Newton</p>
+                        <p class="text-xs text-[var(--neon-green)]">Added 2 days ago</p>
+                    </div>
+                    <div class="p-4 bg-white/5 rounded-lg">
+                        <h3 class="font-semibold">How Great Thou Art</h3>
+                        <p class="text-sm text-gray-400">Composer: Carl Boberg</p>
+                        <p class="text-xs text-[var(--neon-green)]">Added 3 days ago</p>
+                    </div>
+                    <div class="p-4 bg-white/5 rounded-lg">
+                        <h3 class="font-semibold">Blessed Assurance</h3>
+                        <p class="text-sm text-gray-400">Composer: Fanny Crosby</p>
+                        <p class="text-xs text-[var(--neon-green)]">Added 5 days ago</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Songs Grid -->
+    <section class="py-8 px-4 md:px-8">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Sample Song Cards -->
+                <div class="song-card rounded-xl overflow-hidden">
+                    <img src="https://source.unsplash.com/featured/?gospel,music" alt="Song thumbnail" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold">Amazing Grace</h3>
+                        <p class="text-sm text-gray-400">John Newton</p>
+                        <div class="flex gap-2 mt-2">
+                            <span class="text-xs bg-[var(--neon-green)]/20 text-[var(--neon-green)] px-2 py-1 rounded">English</span>
+                            <span class="text-xs bg-[var(--neon-green)]/20 text-[var(--neon-green)] px-2 py-1 rounded">Christmas</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="song-card rounded-xl overflow-hidden">
+                    <img src="https://source.unsplash.com/featured/?worship" alt="Song thumbnail" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold">How Great Thou Art</h3>
+                        <p class="text-sm text-gray-400">Carl Boberg</p>
+                        <div class="flex gap-2 mt-2">
+                            <span class="text-xs bg-[var(--neon-green)]/20 text-[var(--neon-green)] px-2 py-1 rounded">English</span>
+                            <span class="text-xs bg-[var(--neon-green)]/20 text-[var(--neon-green)] px-2 py-1 rounded">Sunday</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="song-card rounded-xl overflow-hidden">
+                    <img src="https://source.unsplash.com/featured/?church" alt="Song thumbnail" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold">Blessed Assurance</h3>
+                        <p class="text-sm text-gray-400">Fanny Crosby</p>
+                        <div class="flex gap-2 mt-2">
+                            <span class="text-xs bg-[var(--neon-green)]/20 text-[var(--neon-green)] px-2 py-1 rounded">English</span>
+                            <span class="text-xs bg-[var(--neon-green)]/20 text-[var(--neon-green)] px-2 py-1 rounded">Easter</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Theme Switcher -->
+    <div class="fixed bottom-4 right-4 bg-black/50 p-2 rounded-full backdrop-blur-sm">
+        <button class="w-8 h-8 rounded-full bg-[var(--neon-green)] cursor-pointer"></button>
+        <button class="w-8 h-8 rounded-full bg-[var(--neon-purple)] cursor-pointer mt-2"></button>
+        <button class="w-8 h-8 rounded-full bg-[var(--neon-blue)] cursor-pointer mt-2"></button>
+        <button class="w-8 h-8 rounded-full bg-white cursor-pointer mt-2"></button>
+        <button class="w-8 h-8 rounded-full bg-[var(--neon-orange)] cursor-pointer mt-2"></button>
+        <button class="w-8 h-8 rounded-full bg-[var(--neon-pink)] cursor-pointer mt-2"></button>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
