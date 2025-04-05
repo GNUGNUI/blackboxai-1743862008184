@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Songs of Salvation</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        :root {
+            --neon-green: #39FF14;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #000;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-text {
+            font-family: 'Pacifico', cursive;
+            text-shadow: 0 0 10px var(--neon-green),
+                         0 0 20px var(--neon-green),
+                         0 0 30px var(--neon-green);
+        }
+
+        .login-container {
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 10px var(--neon-green);
+            }
+            to {
+                box-shadow: 0 0 20px var(--neon-green),
+                           0 0 30px var(--neon-green);
+            }
+        }
+
+        .input-field {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--neon-green);
+            transition: all 0.3s ease;
+        }
+
+        .input-field:focus {
+            box-shadow: 0 0 15px var(--neon-green);
+        }
+
+        .login-btn {
+            background: var(--neon-green);
+            transition: all 0.3s ease;
+        }
+
+        .login-btn:hover {
+            box-shadow: 0 0 20px var(--neon-green);
+            transform: translateY(-2px);
+        }
+
+        .error-message {
+            background: rgba(255, 0, 0, 0.1);
+            border: 1px solid #ff0000;
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-black text-white px-4">
+    <div class="login-container bg-black/30 p-8 rounded-2xl backdrop-blur-sm w-full max-w-md">
+        <div class="text-center mb-8">
+            <h1 class="logo-text text-4xl mb-2">Songs of Salvation</h1>
+            <p class="text-gray-400">Admin Dashboard</p>
+        </div>
+
+        <div class="error-message p-4 rounded-lg mb-6 text-red-500 text-sm text-center" id="errorMessage">
+            Invalid credentials. Please try again.
+        </div>
+
+        <form id="loginForm" class="space-y-6">
+            <div>
+                <label class="block text-sm font-medium mb-2">Email</label>
+                <div class="relative">
+                    <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
+                        <i class="fas fa-envelope"></i>
+                    </span>
+                    <input 
+                        type="email" 
+                        id="email"
+                        class="input-field w-full pl-10 pr-4 py-2 rounded-lg focus:outline-none text-white" 
+                        placeholder="Enter your email"
+                        required
+                    >
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium mb-2">Password</label>
+                <div class="relative">
+                    <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
+                        <i class="fas fa-lock"></i>
+                    </span>
+                    <input 
+                        type="password" 
+                        id="password"
+                        class="input-field w-full pl-10 pr-4 py-2 rounded-lg focus:outline-none text-white" 
+                        placeholder="Enter your password"
+                        required
+                    >
+                </div>
+            </div>
+
+            <button 
+                type="submit" 
+                class="login-btn w-full py-2 rounded-lg text-black font-semibold hover:bg-opacity-90 transition-all"
+            >
+                Login to Dashboard
+            </button>
+        </form>
+
+        <div class="mt-6 text-center">
+            <a href="../index.html" class="text-sm text-gray-400 hover:text-[var(--neon-green)] transition-colors">
+                <i class="fas fa-arrow-left mr-2"></i>Back to Homepage
+            </a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password');
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // Check credentials
+            if (email === 'maxyrocs@gmail.com' && password.value === 'maxyrocs@gmail.com') {
+                // Store login state
+                localStorage.setItem('adminLoggedIn', 'true');
+                // Redirect to dashboard
+                window.location.href = 'dashboard.html';
+            } else {
+                // Show error message
+                errorMessage.style.display = 'block';
+                // Clear password field
+                password.value = '';
+                // Shake animation for error
+                errorMessage.style.animation = 'shake 0.5s';
+                setTimeout(() => {
+                    errorMessage.style.animation = '';
+                }, 500);
+            }
+        });
+
+        // Add shake animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                25% { transform: translateX(-10px); }
+                75% { transform: translateX(10px); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
